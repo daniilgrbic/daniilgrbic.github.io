@@ -90,6 +90,7 @@ body {
     ul {
         margin: .3em;
         padding-left: 1em;
+        margin-right: 2em;
     }
     li {
         list-style-type: none;
@@ -137,11 +138,22 @@ a:hover {
 }
 
 @media screen and (max-width: 800px) {
+    .profile-picture {
+        width: 8em;
+    }
+    #experience ul {
+        margin-right: 1em;
+    }
+}
+
+@media screen and (max-width: 600px) {
     body {
         font-size: small;
     }
-
     .profile-picture {
         width: 8em;
+    }
+    #experience ul {
+        margin-right: 0em;
     }
 }
