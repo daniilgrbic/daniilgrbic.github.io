@@ -1,15 +1,12 @@
 var topIndex = 100;
 
 function makeDraggable(element) {
-    console.log("make draggable")
     var startx, starty, currx, curry
     const titleBar = element.children[0]
     titleBar.onmousedown = startDragging
     
     function startDragging(e) {
-        element.style.zIndex = topIndex;
-        topIndex = topIndex + 1;
-        console.log("Start")
+        sendToTop(element)
         e = e || element.event;
         e.preventDefault();
         startx = e.clientX;
@@ -33,12 +30,16 @@ function makeDraggable(element) {
     }
 }
 
-
+function sendToTop(element) {
+    element.style.zIndex = topIndex;
+    topIndex = topIndex + 1;
+}
 
 window.onload = function() {
-    console.log("loaded")
     Array.from(document.getElementsByClassName("window")).forEach((element) => {
-        console.log("lol")
         makeDraggable(element)
+        element.onclick = function() {
+            sendToTop(element)
+        }
     })
 }

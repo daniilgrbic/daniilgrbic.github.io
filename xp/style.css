@@ -4,7 +4,7 @@ body {
     margin: 0;
     background-image: url("bliss.jpg");
     background-size: cover; 
-    background-repeat:   no-repeat;
+    background-repeat: no-repeat;
     background-position: center center; 
 }
 
@@ -27,14 +27,24 @@ body {
 
 #terminal {
     background-color: black;
+    pre {
+        overflow-x: auto;
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        padding: 4px;
+        margin-left: 0px;
+    }
 }
 
 #player {
     padding: 0;
-
     .window-body {
         margin: 3px;
         margin-top: 0;
         margin-bottom: 0;
+        height: calc(100%+1em);
+    }
+    iframe {
+        height: calc(100% - 3px);
     }
 }

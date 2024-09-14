@@ -1,0 +1,22 @@
+#terminal {
+    top: 25%;
+    left: 35%;
+    height: 40em;
+    width: 60em;
+}
+
+#credits {
+    top: 25%;
+    left: 85%;
+    width: 20em;
+    img {
+        width: calc(20em - 16px);
+    }
+}
+
+#player {
+    top: 75%;
+    left: 55%;
+    height: 35em;
+    width: 50em;
+}

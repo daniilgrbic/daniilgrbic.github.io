@@ -11,6 +11,17 @@ function evaluate(expr) {
 
 var terminalString = "C:\\WINDOWS\\SYSTEM32>";
 var inputText = "";
+const forbiddenKeys = [
+    "Ctrl", 
+    "Shift", 
+    "Control",
+    "Alt",
+    "Delete",
+    "ArrowUp",
+    "ArrowDown",
+    "ArrowLeft",
+    "ArrowRight",
+]
 
 addEventListener("keydown", (event) => {
     var input = document.getElementById("input");
@@ -31,7 +42,7 @@ addEventListener("keydown", (event) => {
         if (inputText.length > 0) {
             inputText = inputText.slice(0, -1);
         }
-    } else {
+    } else if (!forbiddenKeys.includes(event.key)) {
         inputText += event.key;
     }
     input.innerHTML = terminalString + inputText;
