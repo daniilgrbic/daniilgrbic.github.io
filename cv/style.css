@@ -7,6 +7,8 @@
     --color-background: #eceae2;
     --color-section: #ffffff;
     --color-border: #cccccc;
+    --color-font: #000000;
+    --color-accent: #ff3622;
 
     --icon-padding: .3em;
     --icon-size: 3.5em;
@@ -22,9 +24,9 @@
 
 body {
     margin: var(--body-margin);
-    /* width: calc(100vw - 2*var(--body-margin)); */
     background-color: var(--color-background);
     font-family: 'Source Sans Pro', sans-serif;
+    color: var(--color-font);
 }
 
 .section { 
@@ -108,8 +110,8 @@ body {
 
 .timeline-line {
     position: absolute;
-    background-color: #cccccc;
-    width: calc(var(--border-width) + 1px);
+    background-color: var(--color-border);
+    width: var(--border-width);
     left: calc(var(--icon-size)/2 + var(--icon-padding));
     top: calc(var(--icon-size) + 2*var(--icon-padding) + 2*var(--border-width));
     transform: translate(-50%); 
@@ -130,11 +132,11 @@ body {
 
 a {
     text-decoration: none;
-    color: black;
+    color: var(--color-font);
 }
 
 a:hover {
-    color: #ff3622;
+    color: var(--color-accent);
 }
 
 @media screen and (max-width: 800px) {
@@ -155,5 +157,15 @@ a:hover {
     }
     #experience ul {
         margin-right: 0em;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    :root {
+        --color-background: #111111;
+        --color-section: #222222;
+        --color-border: #333333;
+        --color-font: #eeeeee;
+        --color-accent: #fd521e;
     }
 }
