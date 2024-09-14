@@ -27,7 +27,7 @@ window.onload = function() {
         if(!dates[1].includes("Present"))
             return;
 
-        var startDate = new Date("1 " + dates[0])
+        var startDate = new Date("1 " + dates[0].replace("'", "20"))
         var endDate = (dates[1].includes("Present")) ? 
             new Date() : new Date("1 " + dates[1])
 

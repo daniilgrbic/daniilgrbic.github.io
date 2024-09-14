@@ -91,20 +91,20 @@ body {
     margin-bottom: .1em;
 }
 
-#experience {
-    ul {
-        margin: .3em;
-        padding-left: 1em;
-        margin-right: 2em;
-    }
-    li {
-        list-style-type: none;
-        text-indent: -.8em;
-    }
-    li:before {
-        content: "•";
-        padding-right: .5em;
-    }
+ul {
+    margin: .3em;
+    padding-left: 1em;
+    margin-right: 2em;
+}
+
+li {
+    list-style-type: none;
+    text-indent: -.8em;
+}
+
+li:before {
+    content: "•";
+    padding-right: .5em;
 }
 
 #skills h3 {
@@ -146,19 +146,19 @@ a:hover {
     .profile-picture {
         width: 8em;
     }
-    #experience ul {
+    ul {
         margin-right: 1em;
     }
 }
 
 @media screen and (max-width: 600px) {
     body {
-        font-size: small;
+        font-size: 11pt;
     }
     .profile-picture {
         width: 8em;
     }
-    #experience ul {
+    ul {
         margin-right: 0em;
     }
 }
