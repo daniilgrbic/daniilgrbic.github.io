@@ -35,6 +35,9 @@ body {
     padding: 1em;
     max-width: 50em;
     background-color: var(--color-section);
+
+    animation-duration: .5s;
+    animation-name: slidein;
 }
 
 .section > h2 {
@@ -167,5 +170,11 @@ a:hover {
         --color-border: #333333;
         --color-font: #eeeeee;
         --color-accent: #fd521e;
+    }
+}
+
+@keyframes slidein {
+    0% {
+        margin-bottom: calc(var(--body-margin) * 4);
     }
 }
