@@ -10,7 +10,7 @@ body {
 
 .window {
     position: absolute;
-    transform: translate(-50%, -50%);
+    /* transform: translate(-50%, -50%); */
     z-index: 0;
 
     display: flex;
@@ -25,6 +25,32 @@ body {
     cursor: move;
 }
 
+.resize-zone {
+    position: absolute;
+}
+.left-resize {
+    width: 5px;
+    height: 100%;
+    cursor: ew-resize;
+}
+.right-resize {
+    width: 5px;
+    height: 100%;
+    right: 0;
+    cursor: ew-resize;
+}
+.top-resize {
+    height: 5px;
+    width: 100%;
+    cursor: ns-resize;
+}
+.bottom-resize {
+    height: 5px;
+    width: 100%;
+    bottom: 0;
+    cursor: ns-resize;
+}
+
 #terminal {
     background-color: black;
     pre {
@@ -32,7 +58,8 @@ body {
         white-space: pre-wrap;
         word-wrap: break-word;
         padding: 4px;
-        margin-left: 0px;
+        margin-left: 0;
+        width: calc(100% - 3px);
     }
 }
 

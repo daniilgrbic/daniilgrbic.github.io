@@ -1,22 +1,19 @@
 #terminal {
-    top: 25%;
-    left: 35%;
-    height: 40em;
-    width: 60em;
+    height: 45em;
+    width: 65em;
+    z-index: 0;
 }
 
 #credits {
-    top: 25%;
-    left: 85%;
     width: 20em;
+    z-index: 2;
     img {
         width: calc(20em - 16px);
     }
 }
 
 #player {
-    top: 75%;
-    left: 55%;
     height: 35em;
     width: 50em;
+    z-index: 1;
 }
