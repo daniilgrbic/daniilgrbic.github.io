@@ -9,8 +9,8 @@ body {
 }
 
 .window {
-    position: absolute;
-    /* transform: translate(-50%, -50%); */
+    position: fixed;
+    visibility: visible;
     z-index: 0;
 
     display: flex;

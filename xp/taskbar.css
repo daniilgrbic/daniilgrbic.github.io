@@ -1,0 +1,63 @@
+#task-bar {
+    position: absolute;
+    width: calc(100% - 5px);
+    bottom: 0;
+    cursor: default;
+    border-radius: 0;
+    height: 26px;
+    z-index: 1000000;
+    padding: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: left;
+    gap: 4px;
+    padding-left: 3px;
+}
+
+#start-button {
+    background: linear-gradient(
+        180deg,
+        rgb(187, 250, 179) 0%,
+        rgb(82, 238, 61) 8%,
+        rgb(27, 196, 5) 40%,
+        rgb(23, 167, 4) 88%,
+        rgb(25, 185, 4) 93%,
+        rgb(27, 196, 5) 95%,
+        rgb(27, 196, 5) 96%,
+        rgb(68, 233, 46) 100%
+    );
+    font-style: italic;
+    font-weight: bolder;
+    color: white;
+    font-size: larger;
+    text-shadow: 1px 1px 2px black;
+    border: none;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 5px 50%;
+    border-bottom-right-radius: 5px 50%;
+}
+
+#task-bar img {
+    width: 18px;
+    margin: 2px;
+    vertical-align: middle;
+}
+
+#task-bar .taskbar-window {
+    background-image: linear-gradient(
+        90deg,
+        rgb(101, 155, 255) 0%,
+        rgb(64, 131, 255) 5%,
+        rgb(64, 131, 255) 100%
+    );
+    color: white;
+    border: none;
+    border-radius: 3px;
+
+    width: 150px;
+    text-align: left;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+}

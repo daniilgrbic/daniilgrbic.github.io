@@ -16,10 +16,12 @@ function makeDraggable(titleBar) {
     }
 
     function dragContinuous(e) {
-        var deltax = prevx - e.clientX
-        var deltay = prevy - e.clientY
-        prevx = e.clientX
-        prevy = e.clientY
+        var cursorx = e.clientX.clamp(0, document.documentElement.clientWidth)
+        var cursory = e.clientY.clamp(0, document.documentElement.clientHeight)
+        var deltax = prevx - cursorx
+        var deltay = prevy - cursory
+        prevx = cursorx
+        prevy = cursory
         window.style.left = (window.offsetLeft - deltax) + "px"
         window.style.top = (window.offsetTop - deltay) + "px"
     }
@@ -57,10 +59,12 @@ function makeResizable(resizeZone) {
     function resizeRight(e) {resizeCommon(e, "right")}
 
     function dragContinuous(e) {
-        var deltax = prevx - e.clientX
-        var deltay = prevy - e.clientY
-        prevx = e.clientX
-        prevy = e.clientY
+        var cursorx = e.clientX.clamp(0, document.documentElement.clientWidth)
+        var cursory = e.clientY.clamp(0, document.documentElement.clientHeight)
+        var deltax = prevx - cursorx
+        var deltay = prevy - cursory
+        prevx = cursorx
+        prevy = cursory
         switch (zoneClass) {
             case "top":
                 window.style.top = (window.offsetTop - deltay) + "px"
@@ -91,8 +95,12 @@ function sendToTop(window) {
     topIndex = topIndex + 1
 }
 
+Number.prototype.clamp = function(min, max) {
+    return Math.min(Math.max(this, min), max);
+};
+
 function forEachElementClass(cls, func) {
-    Array.from(document.getElementsByClassName(cls))
+    Array.from(document.querySelectorAll(cls))
         .forEach((el) => {func(el)})
 }
 
@@ -119,23 +127,46 @@ function setPosition(window) {
     }
 }
 
+function registerWindow(window) {
+    var buttonElement = document.createElement("button")
+    buttonElement.classList = "taskbar-window"
+    buttonElement.id = `taskbar-${window.id}`
+    buttonElement.innerHTML = document.querySelector(`#${window.id} .title-bar-text`).innerHTML
+    buttonElement.onclick = () => toggleWindow(window)
+    document.getElementById("task-bar").appendChild(buttonElement)
+    document.querySelector(`#${window.id} .title-bar-controls`).children[0]
+        .onclick = () => toggleWindow(window)
+}
+
+function toggleWindow(window) {
+    if (window.style.visibility == "hidden") {
+        window.style.visibility = "visible"
+        sendToTop(window)
+    } else if (window.style.zIndex != topIndex - 1) {
+        sendToTop(window)
+    } else {
+        window.style.visibility = "hidden"
+    }
+}
+
 window.onload = function() {
-    forEachElementClass("window", (window) => {
+    forEachElementClass(".window", (window) => {
         setPosition(window)
         window.onclick = function() {
             sendToTop(window)
         }
+        registerWindow(window)
     })
-    forEachElementClass("resizable-window", (window) => {
+    forEachElementClass(".resizable-window", (window) => {
         window.appendChild(createDivWithClasses("resize-zone top-resize"))
         window.appendChild(createDivWithClasses("resize-zone bottom-resize"))
         window.appendChild(createDivWithClasses("resize-zone left-resize"))
         window.appendChild(createDivWithClasses("resize-zone right-resize"))
     })
-    forEachElementClass("title-bar", (titleBar) => {
+    forEachElementClass(".window > .title-bar", (titleBar) => {
         makeDraggable(titleBar)
     })
-    forEachElementClass("resize-zone", (resizeZone) => {
+    forEachElementClass(".resize-zone", (resizeZone) => {
         makeResizable(resizeZone)
     })
 }
